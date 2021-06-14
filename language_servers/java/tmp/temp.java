@@ -1,1 +1,0 @@
-public%20class%20Main%20%7B%0A%20%20public%20static%20void%20main(String%5B%5D%20args)%20%7B%0A%20%20%20%20System.out.println(%22Hello%20World%22)%3B%0A%20%20%7D%0A%7D
