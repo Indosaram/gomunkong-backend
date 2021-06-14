@@ -1,0 +1,6 @@
+# Local packages
+*/node_modules/*
+
+# Temp files
+*/tmp/*
+
