@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lang-servers-java-deployment
+  labels:
+    app: lang-servers-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lang-servers-java
+  template:
+    metadata:
+      labels:
+        app: lang-servers-java
+    spec:
+      containers:
+        - name: lang-servers-java
+          image: indosaram/lang-servers-java:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 9003
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lang-servers-java-service
+spec:
+  selector:
+    app: lang-servers-java
+  ports:
+    - protocol: TCP
+      port: 9003
+      targetPort: 9003

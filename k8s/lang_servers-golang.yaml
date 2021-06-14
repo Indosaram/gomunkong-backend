@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lang-servers-golang-deployment
+  labels:
+    app: lang-servers-golang
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lang-servers-golang
+  template:
+    metadata:
+      labels:
+        app: lang-servers-golang
+    spec:
+      containers:
+        - name: lang-servers-golang
+          image: indosaram/lang-servers-golang:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 9005
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lang-servers-golang-service
+spec:
+  selector:
+    app: lang-servers-golang
+  ports:
+    - protocol: TCP
+      port: 9005
+      targetPort: 9005

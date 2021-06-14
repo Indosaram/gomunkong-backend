@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "js-beautify": "^1.13.13",
+    "prettier": "2.3.1"
+  }
+}

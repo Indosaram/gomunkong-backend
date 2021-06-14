@@ -1,0 +1,20 @@
+syntax="proto3";
+
+package lang_server;
+
+option go_package = "github.com/Indosaram/gomunkong/gomunkong-backend/proto/lang_server";
+
+service Lang {
+    rpc Formatter(Input) returns (FormattedCode);
+}
+
+message Input {
+    string lang = 1;
+    string formatter = 2;
+    string code = 3;
+    repeated string args = 4;
+}
+
+message FormattedCode {
+    string formatted_code = 1;
+}
