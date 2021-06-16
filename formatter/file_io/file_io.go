@@ -19,23 +19,20 @@ func WriteTempFile(ext string, code string) {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		err := os.Mkdir(path, 0700)
 		if err != nil {
-			fmt.Println("Failed to create temp directory")
-			panic(err)
+			fmt.Printf("Failed to create temp directory, %s", err)
 		}
 	}
 	filePath := path + "/temp." + ext
 	f, err := os.Create(filePath)
 	if err != nil {
-		fmt.Println("Failed to create temp file")
-		panic(err)
+		fmt.Printf("Failed to create temp file, %s", err)
 	}
 
 	byteString := []byte(code)
 
 	err = ioutil.WriteFile(filePath, byteString, 0700)
 	if err != nil {
-		fmt.Println("Failed to write temp file")
-		panic(err)
+		fmt.Printf("Failed to write temp file, %s", err)
 	}
 	defer f.Close()
 
@@ -44,7 +41,6 @@ func WriteTempFile(ext string, code string) {
 func FormatFile(filePath string, command string, args []string) {
 	_, err := exec.Command(command, args...).Output()
 	if err != nil {
-		fmt.Println("Failed to format temp file")
-		panic(err)
+		fmt.Printf("Failed to format temp file, %s", err)
 	}
 }
