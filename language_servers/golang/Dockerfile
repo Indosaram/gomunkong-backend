@@ -1,11 +1,11 @@
-FROM golang:1.16.5-alpine3.13 as builder
+FROM golang:1.19.2-alpine3.16 as builder
 ENV GO111MODULE=on \
     CGO_ENABLED=0 \
     GOOS=linux \
     GOARCH=amd64
 WORKDIR /temp
 COPY . /temp
-RUN go build -o main /temp/language_servers/golang 
+RUN go build -o main /temp/language_servers/golang
 
 FROM ubuntu
 ENV GIN_MODE=release

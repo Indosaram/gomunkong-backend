@@ -36,7 +36,7 @@ func (s *golangServer) Formatter(ctx context.Context, input *langPb.Input) (*lan
 
 	data, err := ioutil.ReadFile(tempFilePath)
 	if err != nil {
-		fmt.Printf("Failed to read temp file")
+		fmt.Println("Failed to read temp file")
 	}
 
 	return &langPb.FormattedCode{
@@ -49,14 +49,14 @@ func main() {
 	portNumber := ports.GolangPort
 	lis, err := net.Listen("tcp", ":"+portNumber)
 	if err != nil {
-		fmt.Printf("failed to listen: %v", err)
+		fmt.Printf("failed to listen: %v\n", err)
 	}
 
 	grpcServer := grpc.NewServer()
 	langPb.RegisterLangServer(grpcServer, &golangServer{})
 
-	fmt.Printf("start gRPC server on %s port", portNumber)
+	fmt.Printf("start gRPC server on %s port\n", portNumber)
 	if err := grpcServer.Serve(lis); err != nil {
-		fmt.Printf("failed to serve: %s", err)
+		fmt.Printf("failed to serve: %s\n", err)
 	}
 }
