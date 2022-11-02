@@ -34,7 +34,7 @@ func runFormatter(input file_io.Input) string {
 
 func main() {
 	g := gin.Default()
-	g.GET("/api/:lang/:formatter/:code", func(ctx *gin.Context) {
+	g.POST("/api/:lang/:formatter/:code", func(ctx *gin.Context) {
 		input := file_io.Input{
 			Lang:      ctx.Param("lang"),
 			Formatter: ctx.Param("formatter"),
