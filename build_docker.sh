@@ -1,5 +1,3 @@
-docker login
-
 docker build -f formatter/Dockerfile -t indosaram/formatter:latest .
 docker push indosaram/formatter:latest
 
